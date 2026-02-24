@@ -6,10 +6,10 @@ MOVS = [(-1,0),(1,0),(0,-1),(0,1)]
 
 # Funciones basicas
 
-def distancia(a, b):
+def distancia(a, b): # calcula la distancia manhattan
     return abs(a[0]-b[0]) + abs(a[1]-b[1])
 
-def movimientos(pos):
+def movimientos(pos): # devuelve las casillas 
     lista = []
     for dx, dy in MOVS:
         x = pos[0] + dx
@@ -27,7 +27,7 @@ def minimax(gato, raton, profundidad, turno_raton, alpha, beta):
         return distancia(gato, raton)
 
     if turno_raton:
-        # MAX (ratón)
+        # MAX (ratón) 
         valor = -float("inf")
         for mov in movimientos(raton):
             valor = max(valor, minimax(gato, mov, profundidad-1, False, alpha, beta))
@@ -54,13 +54,13 @@ def minimax(gato, raton, profundidad, turno_raton, alpha, beta):
 
 # Movimientos
 
-def mejor_mov_gato(gato, raton):
+def mejor_mov_gato(gato, raton): 
     mejor_val = float("inf")
     mejor = gato
 
-    for mov in movimientos(gato):
+    for mov in movimientos(gato): 
         val = minimax(mov, raton, PROFUNDIDAD, True, -float("inf"), float("inf"))
-        if val < mejor_val:
+        if val < mejor_val: 
             mejor_val = val
             mejor = mov
 
@@ -72,7 +72,7 @@ def mejor_mov_raton(gato, raton):
 
     for mov in movimientos(raton):
         val = minimax(gato, mov, PROFUNDIDAD, False, -float("inf"), float("inf"))
-        if val > mejor_val:
+        if val > mejor_val: 
             mejor_val = val
             mejor = mov
 
@@ -94,7 +94,7 @@ def mostrar(gato, raton):
 
 # Juego
 
-def main():
+def main(): # coloca a ambos en sus posiciones iniciales
     gato = (0,0)
     raton = (TAM-1, TAM-1)
     turnos = 0
@@ -103,7 +103,7 @@ def main():
 
     while turnos < MAX_TURNOS:
 
-        mostrar(gato, raton)
+        mostrar(gato, raton) # muestra donde estan ambos
 
         # turno ratón
         raton = mejor_mov_raton(gato, raton)
@@ -117,10 +117,11 @@ def main():
             print("El gato atrapó al ratón.")
             return
 
-        turnos += 1
+        turnos += 1 # si nadie atrapo a nadie el contador sube hasta 10
 
     print("El ratón escapó.")
 
-if __name__ == "__main__":
+if __name__ == "__main__": # ejecutar juego
 
     main()
+
