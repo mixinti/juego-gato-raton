@@ -46,7 +46,7 @@ def minimax(gato, raton, profundidad, turno_raton, alpha, beta):
             valor = min(valor, minimax(mov, raton, profundidad-1, True, alpha, beta))
             beta = min(beta, valor)
 
-            # PODA
+            # poda
             if beta <= alpha:
                 break
 
@@ -122,4 +122,5 @@ def main():
     print("El ratón escapó.")
 
 if __name__ == "__main__":
+
     main()
