@@ -9,7 +9,7 @@ MOVS = [(-1,0),(1,0),(0,-1),(0,1)]
 def distancia(a, b): # calcula la distancia manhattan
     return abs(a[0]-b[0]) + abs(a[1]-b[1])
 
-def movimientos(pos): # devuelve las casillas 
+def movimientos(pos): # devuelve los movimientos validos
     lista = []
     for dx, dy in MOVS:
         x = pos[0] + dx
@@ -124,4 +124,5 @@ def main(): # coloca a ambos en sus posiciones iniciales
 if __name__ == "__main__": # ejecutar juego
 
     main()
+
 
